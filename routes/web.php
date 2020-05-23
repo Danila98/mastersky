@@ -22,7 +22,8 @@ Route::get('catalog', function () {
 Route::get('product', function () {
     return view('product');
 });
-Route::get('articles', 'ArticlesController@allArticles');
+Route::get('articles', 'GuestController@allArticles');
+Route::get('article/{id}', 'GuestController@oneArticles');
 Route::get('reviews', function () {
     return view('reviews');
 });
@@ -43,6 +44,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'HomeController@profile')->name('profile');
 
+Route::get('/favorites', 'HomeController@favorites')->name('favorites');
+
+//Статьи
+
 Route::get('/myArticles', 'ArticlesController@index')->name('myArticles');
 
 Route::get('/myArticles/create', 'ArticlesController@create')->name('createArticles');
@@ -55,4 +60,4 @@ Route::delete('/myArticles/{id}', 'ArticlesController@delete');
 
 Route::post('/articles', 'ArticlesController@store');
 
-Route::get('/favorites', 'HomeController@favorites')->name('favorites');
+//

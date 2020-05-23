@@ -39,7 +39,7 @@
                         <a href="myArticles/create"><input class="bth bth-reg bth-articles" value="Написать статью" type="submit"></a>
                         <div class="products-items">
                             @foreach($articles as $article )
-                            <a href="article/{{$article->id}}" class="product-link">
+                            <a href="product" class="product-link">
                                 <div class="products-item">
                                     <input type="hidden" value="{{$article->article_id}}">
                                     <img  src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">

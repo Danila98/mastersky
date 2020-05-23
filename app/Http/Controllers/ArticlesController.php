@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
 
         $articles = \App\Article::all();
@@ -62,11 +66,5 @@ class ArticlesController extends Controller
         return redirect('/myArticles');
         
     }
-    public function allArticles(){
-
-        $articles = \App\Article::all();
-        
-        return view('articles', compact('articles'));
-
-    }
+    
 }
