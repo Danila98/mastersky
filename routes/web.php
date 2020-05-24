@@ -51,6 +51,8 @@ Route::get('/logout', function()
 
 Route::get('/profile', 'HomeController@profile')->name('profile');
 
+Route::post('/user/{id}', 'HomeController@update')->name('profileUpdate');
+
 Route::get('/favorites', 'HomeController@favorites')->name('favorites');
 
 //Статьи
