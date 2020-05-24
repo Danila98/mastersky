@@ -26,7 +26,7 @@
                 </div>
                 </form>
                 <div class="page-products-content">
-                    <h4 class="product-head">Мои статьи</h4>
+                    <h4 class="product-head">Статьи</h4>
                     <div class="product-list">
                         <div class="products-search">
                             <div class="bth-product"> 
@@ -36,19 +36,22 @@
                                 </form>
                             </div>
                         </div>
-                        <a href="myArticles/create"><input class="bth bth-reg bth-articles" value="Написать статью" type="submit"></a>
                         <div class="products-items">
                             @foreach($articles as $article )
+                            @foreach($files as $file)
+                            @if($article->id == $file->article)
                             <a href="article/{{$article->id}}" class="product-link">
                                 <div class="products-item">
                                     <input type="hidden" value="{{$article->article_id}}">
-                                    <img  src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">
+                                    <img  src="/storage/{{$file->url}}" alt="" class="product-img">
                                     <div class="product-card">
                                         <h2 class="product-item">{{$article->title}}</h2>
                                         <p class="product-description">{{$article->content}}</p>
                                     </div>
                                 </div>
                             </a>
+                            @endif
+                            @endforeach
                             @endforeach
                         </div>
                     </div>

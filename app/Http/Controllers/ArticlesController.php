@@ -17,14 +17,16 @@ class ArticlesController extends Controller
     public function index(){
 
         $articles = \App\Article::all();
+        $files = \App\Image::all();
         // return $articles;
-        return view('myArticles', compact('articles'));
+        return view('myArticles', compact('articles'), compact('files'));
     }
 
     public function create(){
         return view('myArticles.create-articles');
     }
-    public function store(){
+    public function store(Request $request){
+        
 
         $article = new Article();
 
@@ -33,18 +35,27 @@ class ArticlesController extends Controller
         $article->user = request('user');
 
         $article->save();
+        if($request->hasFile('file')) {
+            $path = $request->file('file')->store('uploads', 'public');
+            $file = new \App\Image();
+            $file->url = $path;
+            $file->article = $article->id;
+            $file-> save();
+        }
         
         return redirect('/myArticles');
     }
     public function edit($articlesID){
         
         $article = Article::findOrFail($articlesID);
-    
-        return view('myArticles.edit-articles', compact('article'));
+
+        $files = \App\Image::where('article', '=', $articlesID)->first();
+        
+        return view('myArticles.edit-articles', compact('article'), compact('files'));
         
     }
 
-    public function update($id){
+    public function update(Request $request, $id){
         
         $article = Article::find($id);
 
@@ -53,8 +64,18 @@ class ArticlesController extends Controller
         $article->link              = request('link');
         // $article->updated_at        = timestamp();
 
+        
+        if($request->hasFile('file')) {
+            $path = $request->file('file')->store('uploads', 'public');
+            $file = new \App\Image();
+            if(\App\Image::where('article', '=', $id)){
+                $oldImg = \App\Image::where('article', '=', $id)->delete();
+            }
+            $file->url = $path;
+            $file->article = $article->id;
+            $file-> save();
+        }
         $article->save();
-
         return redirect('/myArticles');
         
     }

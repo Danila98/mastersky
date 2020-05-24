@@ -11,14 +11,15 @@ class GuestController extends Controller
     public function allArticles(){
 
         $articles = \App\Article::all();
-        
-        return view('articles', compact('articles'));
+        $files = \App\Image::all();
+       
+        return view('articles', compact('articles'), compact('files'));
 
     }
     public function oneArticles($id){
         $article = Article::find($id);
-        
-        return view('article', compact('article'));
+        $files = \App\Image::where('article', '=', $id)->first();
+        return view('article', compact('article'), compact('files'));
 
     }
 }

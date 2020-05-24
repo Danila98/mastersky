@@ -15,11 +15,12 @@
                         <a href="myArticles/create"><input class="bth bth-reg bth-articles" value="Написать статью" type="submit"></a>
                         <div class="products-items">
                             @foreach($articles as $article )
-                            @if (auth()->user()->id == $article->user)
+                            @foreach($files as $file)
+                            @if (auth()->user()->id == $article->user && $article->id == $file->article)
                             <a href="myArticles/{{$article->id}}" class="product-link">
                                 <div class="products-item">
                                     <input type="hidden" value="{{$article->article_id}}">
-                                    <img  src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">
+                                    <img  src="/storage/{{$file->url}}" alt="" class="product-img">
                                     <div class="product-card">
                                         <h2 class="product-item">{{$article->title}}</h2>
                                         <p class="product-description">{{$article->content}}</p>
@@ -27,6 +28,7 @@
                                 </div>
                             </a>
                             @endif
+                            @endforeach
                             @endforeach
                         </div>
                     </div>

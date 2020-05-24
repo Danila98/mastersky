@@ -3,12 +3,12 @@
 @section('content')
 <h3 class='profile-username'>Создать статью</h3>
         <div class="content-profile">
-            <form action="/articles" method="post">
+            <form action="/articles" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name='user' value="{{auth()->user()->id}}">
                 <div class="profile-data">
                     <label class="profile-label" for="">Фото</label>
-                        <input class="profile-input" type="file" name="" id="">
+                        <input class="profile-input" type="file" name="file" id="photo">
                     <label class="profile-label" for="">Название</label>
                         <input class="profile-input" type="text" name="title" id="">
                     <label class="profile-label" for="">Категория</label>
