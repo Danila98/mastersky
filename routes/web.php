@@ -42,6 +42,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/logout', function()
+{
+    Auth::logout();
+
+    return redirect('/');
+});
+
 Route::get('/profile', 'HomeController@profile')->name('profile');
 
 Route::get('/favorites', 'HomeController@favorites')->name('favorites');
@@ -61,6 +68,10 @@ Route::delete('/myArticles/{id}', 'ArticlesController@delete');
 Route::post('/articles', 'ArticlesController@store');
 
 //
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

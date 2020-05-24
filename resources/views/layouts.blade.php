@@ -23,7 +23,7 @@
                 		<div class="registration">
 							@auth
 								<a href="{{ url('profile') }}"> <input class="bth bth-reg" value="Личный кабинет" type="button"></a>
-								<a href="{{ route('logout') }}"> <input class="bth bth-reg" value="Выход" type="button"></a>
+								<a href="/logout"> <input class="bth bth-reg" value="Выход" type="button"></a>
 							@else
 								<a href="{{ route('login') }}"> <input class="bth bth-reg" value="Вход/Регистрация" type="button">
 									
