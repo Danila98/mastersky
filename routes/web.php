@@ -69,6 +69,20 @@ Route::delete('/myArticles/{id}', 'ArticlesController@delete');
 
 Route::post('/articles', 'ArticlesController@store');
 
+
+//Продукция
+
+Route::get('/products', 'ProductsController@index')->name('products');
+
+Route::get('/products/create', 'ProductsController@create');
+
+Route::get('/products/{id}', 'ProductsController@edit');
+
+Route::patch('/products/{id}', 'ProductsController@update');
+
+Route::delete('/products/{id}', 'ProductsController@delete');
+
+Route::post('/products', 'ProductsController@store');
 //
 
 Auth::routes();

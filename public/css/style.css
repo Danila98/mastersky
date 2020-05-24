@@ -393,7 +393,7 @@ font-style: normal;
     flex-direction: column;
 }
 .product-img{
-    max-width: 13rem;
+    width: 13rem;
     height: 10rem;
     margin-right: 1rem;
 }
