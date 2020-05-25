@@ -60,24 +60,18 @@
 			<div class="home-products">
 				<h3 class="head-home">Хиты продаж</h3>
 				<div class="home-card-product">
+					@foreach($data['products'] as $product)
+					@foreach($data['files'] as $file)
+					@if($product->id == $file->product)
 					<div class="home-card-product-item">
-						<img src="/img/products/card1.jpg" alt="" class="home-card-img">
-						<h4 class="home-card-head">Название</h4>
-						<p class="home-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sed culpa, laudantium qui hic nam! Accusamus consequuntur similique non quos, ullam voluptate minus accusantium dolorum!</p>
-						<input type="submit" value="Подробнее" class="home-card-btn bth-default">
+						<img src="/storage/{{$file->url}}" alt="" class="home-card-img">
+						<h4 class="home-card-head">{{$product->name}}</h4>
+						<p class="home-card-text">{{$product->description}}</p>
+						<a href='/product/{{$product->id}}'><input type="submit" value="Подробнее" class="home-card-btn bth-default"></a>
 					</div>
-					<div class="home-card-product-item">
-						<img src="/img/products/card1.jpg" alt="" class="home-card-img">
-						<h4 class="home-card-head">Название</h4>
-						<p class="home-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sed culpa, laudantium qui hic nam! Accusamus consequuntur similique non quos, ullam voluptate minus accusantium dolorum!</p>
-						<input type="submit" value="Подробнее" class="home-card-btn bth-default">
-					</div>
-					<div class="home-card-product-item">
-						<img src="/img/products/card1.jpg" alt="" class="home-card-img">
-						<h4 class="home-card-head">Название</h4>
-						<p class="home-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sed culpa, laudantium qui hic nam! Accusamus consequuntur similique non quos, ullam voluptate minus accusantium dolorum!</p>
-						<input type="submit" value="Подробнее" class="home-card-btn bth-default">
-					</div>
+					@endif
+					@endforeach
+					@endforeach
 				</div>
 				<h3 class="head-home">Наши Услуги</h3>
 			</div>
@@ -121,10 +115,10 @@
 			<div class="news">
 				<div class="news-up">
 					<h3 class="head-home">Новости</h3>
-					@foreach($news as $new)
-					@foreach($files as $file)
+					@foreach($data['news'] as $new)
+					@foreach($data['files'] as $file)
 					@if($new->id == $file->news)
-					<a href="/news/{{$new->id}}">
+					<a href="/new/{{$new->id}}">
 						<div class="news-cards">
 							<div class="news-card-item">
 								<img src="/storage/{{$file->url}}" alt="" class="news-img">

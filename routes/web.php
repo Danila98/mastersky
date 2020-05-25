@@ -14,18 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'GuestController@main');
-Route::get('catalog', function () {
-    return view('catalog');
-});
-Route::get('product', function () {
-    return view('product');
-});
+Route::get('catalog', 'GuestController@allProduct');
+Route::get('product/{id}', 'GuestController@oneProduct');
 Route::get('articles', 'GuestController@allArticles');
 Route::get('article/{id}', 'GuestController@oneArticles');
 Route::get('reviews', function () {
     return view('reviews');
 });
-Route::get('news/{id}', 'GuestController@oneNews');
+Route::get('new/{id}', 'GuestController@oneNews');
 Route::get('login', function () {
     return view('login');
 });

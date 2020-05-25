@@ -12,9 +12,13 @@
                   <div class="carousel-item">
                     <img src="/img/products/card1.jpg" class="d-block w-100 product-photo-item" alt="...">
                   </div>
-                  <div class="carousel-item">
-                    <img src="/img/products/card1.jpg" class="d-block w-100 product-photo-item" alt="...">
+                  @foreach($data['files'] as $file)
+					@if($data['products']->id == $file->product)
+                  <div class="carousel-item active">
+                    <img src="/storage/{{$file->url}}" class="d-block w-100 product-photo-item" alt="...">
                   </div>
+                    @endif
+					@endforeach
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,8 +31,8 @@
               </div>
         </div>
         <div class="product-description">
-            <h2>Название</h2>
-            <p class="description-product">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat perferendis laudantium possimus explicabo, culpa nam minus itaque! Voluptates est eum, inventore quis harum minima labore dolore placeat vel provident nesciunt modi velit debitis impedit. Impedit, tempore optio pariatur iusto amet velit quasi sed officiis facere perspiciatis, earum ipsum ab aliquam?</p>
+            <h2>{{$data['products']->name}}</h2>
+            <p class="description-product">{{$data['products']->description}}</p>
             <span class="product-option">Размеры:</span>
             <span class="product-option">Мастер:Оля</span>
             <span class="product-option">Оценка</span>

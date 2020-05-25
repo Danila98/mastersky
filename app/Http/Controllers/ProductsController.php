@@ -34,12 +34,14 @@ class ProductsController extends Controller
         if($request->hasFile('files')) {
             $i = 0;
             foreach($request->files as $file){
-                $path = $request->file('files')[$i]->store('uploads', 'public');
-                $file = new \App\Image();
-                $file->url = $path;
-                $file->product = $product->id;
-                $file-> save();
-                $i++;
+                    foreach($file as $key){
+                    $path = $request->file('files')[$i]->store('uploads', 'public');
+                    $photo = new \App\Image();
+                    $photo->url = $path;
+                    $photo->product = $product->id;
+                    $photo-> save();
+                    $i++;   
+                }
             }
         }
         

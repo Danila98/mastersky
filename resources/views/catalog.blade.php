@@ -37,52 +37,21 @@
                             </div>
                         </div>
                         <div class="products-items">
-                            <a href="/product" class="product-link">
+                        @foreach($data['products'] as $product)
+					    @foreach($data['files'] as $file)
+					    @if($product->id == $file->product)
+                            <a href="/product/{$product->id}" class="product-link">
                                 <div class="products-item">
-                                    <img  src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">
+                                    <img  src="/storage/{{$file->url}}" alt="" class="product-img">
                                     <div class="product-card">
-                                        <h2 class="product-item">Название продукта</h2>
-                                        <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem a mollitia dolores libero explicabo, dolorem ex fuga fugit ducimus iure eaque alias commodi laborum laboriosam?</p>
+                                        <h2 class="product-item">{{$product->name}}</h2>
+                                        <p class="product-description">{{$product->description}}</p>
                                     </div>
                                 </div>
                             </a>
-                            <a href="" class="product-link">
-                                <div class="products-item">
-                                    <img src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">
-                                    <div class="product-card">
-                                        <h2 class="product-item">Название продукта</h2>
-                                        <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem a mollitia dolores libero explicabo, dolorem ex fuga fugit ducimus iure eaque alias commodi laborum laboriosam?</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="" class="product-link">
-                                <div class="products-item">
-                                    <img src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">
-                                    <div class="product-card">
-                                        <h2 class="product-item">Название продукта</h2>
-                                        <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem a mollitia dolores libero explicabo, dolorem ex fuga fugit ducimus iure eaque alias commodi laborum laboriosam?</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="" class="product-link">
-                                <div class="products-item">
-                                    <img src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">
-                                    <div class="product-card">
-                                        <h2 class="product-item">Название продукта</h2>
-                                        <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem a mollitia dolores libero explicabo, dolorem ex fuga fugit ducimus iure eaque alias commodi laborum laboriosam?</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="" class="product-link">
-                                <div class="products-item">
-                                    <img src="/img/products/AirBrush_20191013100137.jpg" alt="" class="product-img">
-                                    <div class="product-card">
-                                        <h2 class="product-item">Название продукта</h2>
-                                        <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem a mollitia dolores libero explicabo, dolorem ex fuga fugit ducimus iure eaque alias commodi laborum laboriosam?</p>
-                                    </div>
-                                </div>
-                            </a>
-                            
+                            @endif
+                            @endforeach
+                            @endforeach
                         </div>
                     </div>
                 </div>
