@@ -75,7 +75,7 @@ class ProductsController extends Controller
             $file-> save();
         }
         $product->save();
-        return redirect('/myArticles');
+        return redirect('/products');
         
     }
 
@@ -83,7 +83,7 @@ class ProductsController extends Controller
         
         $product = \App\Product::find($id)->delete();
 
-        return redirect('/myArticles');
+        return redirect('/products');
         
     }
 }

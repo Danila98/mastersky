@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'GuestController@main');
 Route::get('catalog', function () {
     return view('catalog');
 });
@@ -27,9 +25,7 @@ Route::get('article/{id}', 'GuestController@oneArticles');
 Route::get('reviews', function () {
     return view('reviews');
 });
-Route::get('news', function () {
-    return view('news');
-});
+Route::get('news/{id}', 'GuestController@oneNews');
 Route::get('login', function () {
     return view('login');
 });
@@ -83,6 +79,20 @@ Route::patch('/products/{id}', 'ProductsController@update');
 Route::delete('/products/{id}', 'ProductsController@delete');
 
 Route::post('/products', 'ProductsController@store');
+
+//Новости
+
+Route::get('/news', 'NewsController@index')->name('news');
+
+Route::get('/news/create', 'NewsController@create');
+
+Route::get('/news/edit/{id}', 'NewsController@edit');
+
+Route::patch('/news/{id}', 'NewsController@update');
+
+Route::delete('/news/{id}', 'NewsController@delete');
+
+Route::post('/news', 'NewsController@store');
 //
 
 Auth::routes();

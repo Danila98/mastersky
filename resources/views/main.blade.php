@@ -121,39 +121,23 @@
 			<div class="news">
 				<div class="news-up">
 					<h3 class="head-home">Новости</h3>
-					<a href="/news">
+					@foreach($news as $new)
+					@foreach($files as $file)
+					@if($new->id == $file->news)
+					<a href="/news/{{$new->id}}">
 						<div class="news-cards">
 							<div class="news-card-item">
-								<img src="/img/products/AirBrush_20191008115519.jpg" alt="" class="news-img">
+								<img src="/storage/{{$file->url}}" alt="" class="news-img">
 								<div class="news-body-home">
-									<h4 class="news-head">Lorem ipsum dolor sit amet.</h4>
-									<p class="news-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias at sint optio id voluptates modi assumenda dolore odit distinctio error.</p>
+									<h4 class="news-head">{{$new->name}}</h4>
+									<p class="news-text">{{$new->text}}</p>
 								</div>
 							</div>
 						</div>
 					</a>
-					<a href="/news">
-						<div class="news-cards">
-							<div class="news-card-item">
-								<img src="/img/products/AirBrush_20191008115519.jpg" alt="" class="news-img">
-								<div class="news-body-home">
-									<h4 class="news-head">Lorem ipsum dolor sit amet.</h4>
-									<p class="news-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias at sint optio id voluptates modi assumenda dolore odit distinctio error.</p>
-								</div>
-							</div>
-						</div>
-					</a>
-					<a href="/news">
-						<div class="news-cards">
-							<div class="news-card-item">
-								<img src="/img/products/AirBrush_20191008115519.jpg" alt="" class="news-img">
-								<div class="news-body-home">
-									<h4 class="news-head">Lorem ipsum dolor sit amet.</h4>
-									<p class="news-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias at sint optio id voluptates modi assumenda dolore odit distinctio error.</p>
-								</div>
-							</div>
-						</div>
-					</a>
+					@endif
+					@endforeach
+					@endforeach
 				</div>
 				<div class="news-form-banner">
 					<h5 class="form-head">Не нашли, что искали? 
