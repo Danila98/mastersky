@@ -13,8 +13,9 @@
                         <input class="profile-input" type="text" name="title" id="">
                     <label class="profile-label" for="">Категория</label>
                         <select class="profile-input" size="1" name="categories_id" id="">
-                            <option value="">Сшит из частей</option>
-                            <option value="">Связан из частей</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                         </select>
                     <label class="profile-label" for="">Ссылка на источник</label>
                         <input class="profile-input" type="text" name="link" id="">

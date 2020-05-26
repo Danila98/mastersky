@@ -27,17 +27,36 @@ class GuestController extends Controller
 
     }
     public function allArticles(){
-
+        
+        $categories = \App\CategoriesArticle::all();
         $articles = \App\Article::all();
         $files = \App\Image::all();
        
-        return view('articles', compact('articles'), compact('files'));
+        $data =[
+            'categories' => $categories,
+            'articles' => $articles,
+            'files' => $files,
+        ];
+        return view('articles', compact('data'));
 
     }
     public function oneArticles($id){
+
+        $users = DB::table('users')->get();
+
+        $categories = DB::table('categories_articles')->get();
+
         $article = Article::find($id);
+
         $files = \App\Image::where('article', '=', $id)->first();
-        return view('article', compact('article'), compact('files'));
+
+        $data = [
+            'users' => $users,
+            'categories' => $categories,
+            'article' => $article,
+            'files' => $files,
+        ];
+        return view('article', compact('data'));
 
     }
     public function allProduct(){

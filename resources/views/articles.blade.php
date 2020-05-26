@@ -9,18 +9,12 @@
                     <img src="/img/icon/logo.svg"  class="filter-logo" alt="">
                     <span>Категории</span>
                     <ul>
+                    @foreach($data['categories'] as $category)
                         <li class="filter-item">
-                            <input type="checkbox">
-                            <label for="">Категория</label>
+                            <input name="{{$category->name}}" value="{{$category->id}}" type="checkbox">
+                            <label for="{{$category->name}}">{{$category->name}}</label>
                         </li>
-                        <li class="filter-item">
-                            <input type="checkbox">
-                            <label for="">Категория</label>
-                        </li>
-                        <li class="filter-item">
-                            <input type="checkbox">
-                            <label for="">Категория</label>
-                        </li>
+                    @endforeach
                     </ul>
                     <input type="submit" value="искать" class="bth-default ">
                 </div>
@@ -37,8 +31,8 @@
                             </div>
                         </div>
                         <div class="products-items">
-                            @foreach($articles as $article )
-                            @foreach($files as $file)
+                            @foreach($data['articles'] as $article )
+                            @foreach($data['files'] as $file)
                             @if($article->id == $file->article)
                             <a href="article/{{$article->id}}" class="product-link">
                                 <div class="products-item">

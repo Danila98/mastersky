@@ -23,7 +23,8 @@ class ArticlesController extends Controller
     }
 
     public function create(){
-        return view('myArticles.create-articles');
+        $categories = \App\CategoriesArticle::all();
+        return view('myArticles.create-articles', compact('categories'));
     }
     public function store(Request $request){
         
@@ -32,6 +33,7 @@ class ArticlesController extends Controller
 
         $article->title = request('title');
         $article->content = request('content');
+        $article->categories_id = request('categories_id');
         $article->user = request('user');
 
         $article->save();
@@ -62,6 +64,7 @@ class ArticlesController extends Controller
         $article->title             = request('title');
         $article->content           = request('content');
         $article->link              = request('link');
+        $article->categories_id     = request('categories_id');
         // $article->updated_at        = timestamp();
 
         
