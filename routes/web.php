@@ -75,6 +75,20 @@ Route::delete('/categoriesArticle/{id}', 'CategoriesArticleController@delete');
 
 Route::post('/createCategoriesArticle', 'CategoriesArticleController@store');
 
+//Категории продуктов
+
+Route::get('/categoriesProduct', 'CategoriesProductController@index')->name('categoriesProduct');
+
+Route::get('/categoriesProduct/create', 'CategoriesProductController@create')->name('categoriesProduct');
+
+Route::get('/categoriesProduct/{id}', 'CategoriesProductController@edit');
+
+Route::patch('/categoriesProduct/{id}', 'CategoriesProductController@update');
+
+Route::delete('/categoriesProduct/{id}', 'CategoriesProducteController@delete');
+
+Route::post('/createCategoriesProduct', 'CategoriesProductController@store');
+
 //Продукция
 
 Route::get('/products', 'ProductsController@index')->name('products');

@@ -38,6 +38,9 @@ class ProductsController extends Controller
                     $path = $request->file('files')[$i]->store('uploads', 'public');
                     $photo = new \App\Image();
                     $photo->url = $path;
+                    if($i == 0){
+                        $photo->first = 1;
+                    }
                     $photo->product = $product->id;
                     $photo-> save();
                     $i++;   

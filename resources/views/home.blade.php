@@ -17,7 +17,7 @@
             <a href="{{url('products')}}"><li class="profile-navigation-item">Работы</li></a>
             <a href="{{url('news')}}"><li class="profile-navigation-item">Новости</li></a>
             <a href="{{url('categoriesArticle')}}"><li class="profile-navigation-item">Категории Статей</li></a>
-            <a href=""><li class="profile-navigation-item">Категории Товаров</li></a>
+            <a href="{{url('categoriesProduct')}}"><li class="profile-navigation-item">Категории Товаров</li></a>
             @endif
         </nav>
     </div>

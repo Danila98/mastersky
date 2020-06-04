@@ -40,7 +40,7 @@
                         @foreach($data['products'] as $product)
 					    @foreach($data['files'] as $file)
 					    @if($product->id == $file->product)
-                            <a href="/product/{$product->id}" class="product-link">
+                            <a href="/product/{{$product->id}}" class="product-link">
                                 <div class="products-item">
                                     <img  src="/storage/{{$file->url}}" alt="" class="product-img">
                                     <div class="product-card">

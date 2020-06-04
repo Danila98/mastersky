@@ -62,7 +62,7 @@
 				<div class="home-card-product">
 					@foreach($data['products'] as $product)
 					@foreach($data['files'] as $file)
-					@if($product->id == $file->product)
+					@if($product->id == $file->product && $file->first == 1)
 					<div class="home-card-product-item">
 						<img src="/storage/{{$file->url}}" alt="" class="home-card-img">
 						<h4 class="home-card-head">{{$product->name}}</h4>

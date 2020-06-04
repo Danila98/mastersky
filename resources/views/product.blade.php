@@ -65,17 +65,26 @@
                         </div>
                     </div>
                 </a>
-                <a href="">
-                    <div class="news-cards">
-                        <div class="news-card-item">
-                            <img src="/img/profile-photo.png" alt="" class="news-img">
-                            <div class="news-body-home">
-                                <h4 class="news-head">я у мамы дурачок</h4>
-                                <p class="news-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias at sint optio id voluptates modi assumenda dolore odit distinctio error.</p>
+                <form action="">
+                        <div class="news-cards">
+                            <div class="news-card-item">
+                                @if(Auth::user() && auth()->user()->avatar)
+                                    <img src="/storage/{{auth()->user()->avatar}}" alt="" class="news-img">
+                                @else
+                                    <img src="/img/profile-photo.png" alt="" class="news-img">
+                                @endif
+                                <div class="news-body-home">
+                                @if(Auth::user() && auth()->user()->avatar)
+                                    <h4 class="news-head">{{auth()->user()->name}}</h4>
+                                @else
+                                    <h4 class="news-head">я у мамы дурачок</h4>
+                                @endif
+                                    <textarea cols="98"  class="news-text form-control" placeholder="Оставьте комментарий..." ></textarea>
+                                    <input class="btn btn-info mt-2" value="Оставить комментарий" type="submit">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                </form>
             </div>
         </div>
         
