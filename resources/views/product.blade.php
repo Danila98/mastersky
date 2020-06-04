@@ -65,7 +65,10 @@
                         </div>
                     </div>
                 </a>
-                <form action="">
+                <form action="/commentCreate" method="POST">
+                @csrf
+                <input type="hidden" name="product" value="1">
+                <input type="hidden" name="redirect" value="{{$data['products']->id}}">
                         <div class="news-cards">
                             <div class="news-card-item">
                                 @if(Auth::user() && auth()->user()->avatar)
@@ -79,7 +82,7 @@
                                 @else
                                     <h4 class="news-head">я у мамы дурачок</h4>
                                 @endif
-                                    <textarea cols="98"  class="news-text form-control" placeholder="Оставьте комментарий..." ></textarea>
+                                    <textarea cols="98" name='comment' class="news-text form-control" placeholder="Оставьте комментарий..." ></textarea>
                                     <input class="btn btn-info mt-2" value="Оставить комментарий" type="submit">
                                 </div>
                             </div>
