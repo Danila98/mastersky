@@ -14,6 +14,7 @@ class ProductsController extends Controller
 
         $products = \App\Product::all();
         $files = \App\Image::all();
+
         // return $articles;
         return view('products', compact('products'), compact('files'));
     }
@@ -56,6 +57,8 @@ class ProductsController extends Controller
 
         $files = \App\Image::where('product', '=', $id)->first();
         
+
+
         return view('products.edit-products', compact('product'), compact('files'));
         
     }

@@ -75,9 +75,14 @@ class GuestController extends Controller
     public function oneProduct($id){
         $product = \App\Product::find($id);
         $files = \App\Image::all();
+        $users = DB::table('users')->get();
+        $comments = \App\Comment::getCommentsList($id);
+
         $data = [
             'products' => $product,
             'files' => $files,
+            'comments' =>$comments,
+            'users' =>$users,
         ];
 
         return view('product', compact('data'));
