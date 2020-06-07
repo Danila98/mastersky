@@ -4,14 +4,14 @@
 @section('content')
 <h4 class="product-head">Список новостей</h4>
                     <div class="product-list">
-                        <div class="products-search">
+                        <!-- <div class="products-search">
                             <div class="bth-product"> 
                                 <form class="form-search" action="">
                                     <input class="search" placeholder="Поиск..." type="text">
                                     <a class="icon-search" ><img src="img/icon/search.svg" alt=""></a>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                         <a href="news/create"><input class="bth bth-reg bth-articles" value="Добавить новость" type="submit"></a>
                         <div class="products-items">
                             @foreach($news as $new)
@@ -32,4 +32,12 @@
                             @endforeach
                         </div>
                     </div>
+                    <script>
+                        let news = document.querySelectorAll('.product-description');
+                            for(let i = 0; i < news.length; i++){
+                                let text = news[i].innerHTML.substr(0, 100);
+                                news[i].textContent = text;
+                                
+                            }
+                    </script>
 @endsection

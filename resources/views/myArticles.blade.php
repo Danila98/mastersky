@@ -4,14 +4,14 @@
 @section('content')
 <h4 class="product-head">Мои статьи</h4>
                     <div class="product-list">
-                        <div class="products-search">
+                        <!-- <div class="products-search">
                             <div class="bth-product"> 
                                 <form class="form-search" action="">
                                     <input class="search" placeholder="Поиск..." type="text">
                                     <a class="icon-search" ><img src="img/icon/search.svg" alt=""></a>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                         <a href="myArticles/create"><input class="bth bth-reg bth-articles" value="Написать статью" type="submit"></a>
                         <div class="products-items">
                             @foreach($articles as $article )

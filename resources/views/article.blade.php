@@ -1,4 +1,5 @@
 @extends('layouts')
+@section('title', '{{$data['article']->title}}')
 @section('header')
 
 <section>

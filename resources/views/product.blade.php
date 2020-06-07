@@ -1,37 +1,30 @@
 @extends('layouts')
 
-
+@section('title', '{{$data['products']->name}}')
 @section('header')
 
     <div class="product-page">
     
         <div class="product-photo">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="/img/products/card1.jpg" class="d-block w-100 product-photo-item" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/img/products/card1.jpg" class="d-block w-100 product-photo-item" alt="...">
-                  </div>
-                  @foreach($data['files'] as $file)
-					@if($data['products']->id == $file->product)
-                  <div class="carousel-item active">
-                    <img src="/storage/{{$file->url}}" class="d-block w-100 product-photo-item" alt="...">
-                  </div>
+            <div class="big-photo">
+                <div class="carousel-item active">
+                @foreach($data['files'] as $file)
+					@if($data['products']->id == $file->product && $file->first == 1)
+                    <img src="/storage/{{$file->url}}" class="d-block w-100 product-photo-item" alt="..." id="big-photo">
                     @endif
-					@endforeach
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
+					@endforeach   
+                  </div>
+                    
+            </div>
+                <div class="mini-photo">
+                    @foreach($data['files'] as $file)
+					@if($data['products']->id == $file->product)
+                    <img class="mini-photo-item" src="/storage/{{$file->url}}" alt="">
+                    @endif
+					@endforeach   
+                    </div>    
         </div>
+        
         <div class="product-description">
             <h2>{{$data['products']->name}}</h2>
             <p class="description-product">{{$data['products']->description}}</p>
@@ -95,4 +88,14 @@
         </div>
         
     </section>
+    <script>
+        document.addEventListener("click", function (e) {
+            let img = e.target;
+            if(img.className == 'mini-photo-item'){
+                path = img.src;
+                let bigPhoto = document.querySelector('#big-photo');
+                bigPhoto.src = path;
+            }
+        });
+</script>
     @endsection

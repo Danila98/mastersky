@@ -20,7 +20,8 @@ class ProductsController extends Controller
     }
 
     public function create(){
-        return view('products.create-products');
+        $categories = \App\CategoriesArticle::where('type', '=', 1)->get();
+        return view('products.create-products', compact('categories'));
     }
     public function store(Request $request){
         
@@ -52,14 +53,19 @@ class ProductsController extends Controller
         return redirect('/products');
     }
     public function edit($id){
+        $categories = \App\CategoriesArticle::where('type', '=', 1)->get();
         
         $product = \App\Product::findOrFail($id);
 
         $files = \App\Image::where('product', '=', $id)->first();
         
+        $data = [
+            'categories'=> $categories,
+            'product'=> $product,
+            'files'=> $files,
+        ];
 
-
-        return view('products.edit-products', compact('product'), compact('files'));
+        return view('products.edit-products', compact('data'));
         
     }
 

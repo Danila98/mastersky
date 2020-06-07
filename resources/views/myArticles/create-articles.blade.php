@@ -1,5 +1,5 @@
 @extends('home')
-
+@section('title', 'Создание статьи')
 @section('content')
 <h3 class='profile-username'>Создать статью</h3>
         <div class="content-profile">

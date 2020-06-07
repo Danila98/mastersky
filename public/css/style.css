@@ -39,11 +39,11 @@ body{
     padding: 1rem 2rem;
 }
 .head-text-img{
-    background: url(../img/background/tagline.png);
+    /* background: url(../img/background/tagline.png);
     background-repeat: no-repeat;
-    background-size:cover ;
-    height: 60px; /* Когда вставишь svg надо подобрать*/
-    width: 35%;
+    background-size:cover ; */
+    height: 90px; /* Когда вставишь svg надо подобрать*/
+    width: 30%;
 }
 .head-buttons-right{
     width: 50%;
@@ -100,11 +100,12 @@ body{
     outline: none;
 }
 .bth-reg{
-    width: 10rem;
+    min-width: 12rem;
     height: 2rem;
     padding: 5px;
     cursor: pointer;
 }
+
 .head-nav{
     display: flex;
     align-items: center;
@@ -290,7 +291,15 @@ body{
     background: rgba(255, 255, 255, 0.5);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+}
+.registration{
+    display: flex;
+    flex-direction: row;
+    
+}
+.registration a{
+    margin-left: 2rem;
 }
 .news-img{
     margin-right: 0;
@@ -373,6 +382,11 @@ font-style: normal;
     background-size: cover;
     background-repeat: repeat-y;
 }
+.auth{
+    background: url(/img/background/Desktop-1.png);
+    background-size: cover;
+    background-repeat: repeat-y;
+}
 .page-products-filter{
     flex-basis: 20%;
     display: flex;
@@ -384,6 +398,7 @@ font-style: normal;
     width: 7rem;
 }
 .filter-item{
+    text-align: left;
     list-style: none;
 }
 .page-products-content{
@@ -437,9 +452,26 @@ line-height: 16px;
     text-align: center;
 }
 .product-photo{
+    display: flex;
+    flex-direction: column;
     max-width: 20rem;
     max-height: 33rem;
     flex-basis: 30%;
+}
+.jumbotron{
+    margin-bottom: 0;
+}
+.mini-photo{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.mini-photo-item{
+    margin-left: 1rem;
+    width: 50px;
+    height: 50px;
 }
 .product-page{
     display: flex;

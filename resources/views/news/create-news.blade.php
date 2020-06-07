@@ -1,7 +1,7 @@
 @extends('home')
-
+@section('title', 'Добавить новость')
 @section('content')
-<h3 class='profile-username'>Создать статью</h3>
+<h3 class='profile-username'>Добавить новость</h3>
         <div class="content-profile">
             <form action="/news" method="post"  enctype="multipart/form-data">
             @csrf

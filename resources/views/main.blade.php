@@ -3,6 +3,12 @@
 
 @section('header')
 		<section>
+		<div class="jumbotron jumbotron-fluid mb-0">
+				<div class="container">
+					<h1 class="display-4">Заголовочек</h1>
+					<p class="lead">Пошив одежды любой сложности.</p>
+				</div>
+			</div>
 			<div class="slider">
 				<div class="row">
 					<div class="col-md-1"></div>
@@ -79,36 +85,42 @@
 		<section class="">
 			
 			<div class="services-home-cards">
-				<a href="" class="services-home-link">
+				<div class="services-home-link">
 					<div class="services-card">
-						<img src="/img/icon/Машинка.svg" alt="" class="services-img">
+						<img  id="0" src="/img/icon/Машинка.svg" alt="" class="services-img">
 						<span class="services-name">Пошив Одежды</span>
 					</div>
-				</a>
-				<a href="" class="services-home-link">
+				</div>
+				<div  class="services-home-link">
 					<div class="services-card">
-						<img src="/img/icon/Мнкен.svg" alt="" class="services-img">
+						<img id="1" src="/img/icon/Мнкен.svg" alt="" class="services-img">
 						<span class="services-name">Ребрендинг Одежды</span>
 					</div>
-				</a>
-				<a href="" class="services-home-link">
+				</div>
+				<div  class="services-home-link">
 					<div class="services-card">
-						<img src="/img/icon/Ножнц.svg" alt="" class="services-img">
+						<img id="2" src="/img/icon/Ножнц.svg" alt="" class="services-img">
 						<span class="services-name">Ремонт Одежды</span>
 					</div>
-				</a>
-				<a href="" class="services-home-link">
+				</div>
+				<div class="services-home-link">
 					<div class="services-card">
-						<img src="/img/icon/Метр.svg" alt="" class="services-img">
+						<img id="3" src="/img/icon/Метр.svg" alt="" class="services-img">
 						<span class="services-name">Подгон по фигуре</span>
 					</div>
-				</a>
-				<a href="" class="services-home-link ">
+				</div>
+				<div  class="services-home-link ">
 					<div class="services-card">
-							<img src="/img/icon/вязь.svg" alt="" class="services-img">
+							<img id="4" src="/img/icon/вязь.svg" alt="" class="services-img">
 							<span class="services-name">Вязание Изделий</span>
 					</div>
-				</a>
+				</div>
+			</div>
+			<div class="jumbotron jumbotron-fluid mb-0">
+				<div class="container">
+					<h1 class="display-4">Заголовочек</h1>
+					<p class="lead service-text">Пошив одежды любой сложности.</p>
+				</div>
 			</div>
 		</section>
 		<section>
@@ -151,4 +163,28 @@
 			</div>
 			
 		</section>
+		<script>
+			const services = [
+				'Пошив одежды любой сложности',
+				'Ребрединг тоже',
+				'Ремонтируем вообще круто',
+				'Подгон от бога',
+				'Вязание профессионалов',
+			]
+        document.addEventListener("click", function (e) {
+			let service = e.target;
+			
+            if(service.className == 'services-img'){
+				let text = document.querySelector('.service-text');
+				text.innerHTML = services[service.id];
+            }
+		});
+		
+		let news = document.querySelectorAll('.news-text');
+		for(let i = 0; i < news.length; i++){
+			let text = news[i].innerHTML.substr(0, 100);
+			news[i].textContent = text;
+			
+		}
+</script>
 	@endsection

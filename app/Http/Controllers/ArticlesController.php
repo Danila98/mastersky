@@ -23,7 +23,7 @@ class ArticlesController extends Controller
     }
 
     public function create(){
-        $categories = \App\CategoriesArticle::all();
+        $categories = \App\CategoriesArticle::where('type', '=', 2)->get();
         return view('myArticles.create-articles', compact('categories'));
     }
     public function store(Request $request){
@@ -49,11 +49,17 @@ class ArticlesController extends Controller
     }
     public function edit($articlesID){
         
+        $categories = \App\CategoriesArticle::where('type', '=', 2)->get();
+
         $article = Article::findOrFail($articlesID);
 
         $files = \App\Image::where('article', '=', $articlesID)->first();
-        
-        return view('myArticles.edit-articles', compact('article'), compact('files'));
+        $data = [
+            'categories'=> $categories,
+            'article'=> $article,
+            'files'=> $files,
+        ];
+        return view('myArticles.edit-articles', compact('data'));
         
     }
 

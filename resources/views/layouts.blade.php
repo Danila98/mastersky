@@ -11,14 +11,14 @@
 	<div class="wrap">
 		<header class="header">
 			<div class="head-up">
-				<div class="head-text-img"></div>
+				<div class="head-text-img"><img width="350rem" src="img/background/tagline.png" alt=""></div>
 				<div class="head-buttons-right">
-					<div class="bth bth-search"> 
+					<!-- <div class="bth bth-search"> 
 						<form class="form-search" action="">
 							<input class="search" placeholder="Поиск по сайту" type="text">
 							<a class="icon-search" ><img src="img/icon/search.svg" alt=""></a>
 						</form>
-					</div>
+					</div> -->
 					@if (Route::has('login'))
                 		<div class="registration">
 							@auth
@@ -39,9 +39,7 @@
 				<!-- <li><a href=""> Новости</a></li> -->
 				<li><a href="/catalog"> Продукция</a></li>
 				<li><a href="/articles"> Статьи</a></li>
-				<li><a href="/reviews"> Отзывы</a></li>
-				<li><a href=""> Как заказать?</a></li>
-				<li><a href=""> Услуги</a></li>
+				<!-- <li><a href=""> Как заказать?</a></li> -->
 				<!-- <li><a href=""><img src="img/icon/basket.svg" alt=""></a></li> -->
 			</nav>
         </header>
