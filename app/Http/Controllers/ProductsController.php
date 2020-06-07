@@ -94,4 +94,17 @@ class ProductsController extends Controller
         return redirect('/products');
         
     }
+    public function search()
+    {
+        $products = \App\Product::where('categories', '=', request('category'))->get();
+        $files = \App\Image::all();
+        $categories = \App\CategoriesArticle::all();
+        $data = [
+            'products' => $products,
+            'files' => $files,
+            'categories' => $categories,
+        ];
+        return view('catalog', compact('data'));
+
+    }
 }

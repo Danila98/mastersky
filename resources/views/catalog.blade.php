@@ -3,24 +3,22 @@
 
 @section('header')
         <section>
+      
             <div class="page-products">
-                <form action="">
+                <form action="/searchProduct" method="post">
+                @csrf
                 <div class="page-products-filter">
                     <img src="/img/icon/logo.svg"  class="filter-logo" alt="">
                     <span>Категории</span>
                     <ul>
+                    @foreach($data['categories'] as $category)
+                    @if($category->type == 2)
                         <li class="filter-item">
-                            <input type="checkbox">
-                            <label for="">Категория</label>
+                            <input name="category" value="{{$category->id}}" type="radio">
+                            <label for="{{$category->name}}">{{$category->name}}</label>
                         </li>
-                        <li class="filter-item">
-                            <input type="checkbox">
-                            <label for="">Категория</label>
-                        </li>
-                        <li class="filter-item">
-                            <input type="checkbox">
-                            <label for="">Категория</label>
-                        </li>
+                    @endif
+                    @endforeach
                     </ul>
                     <input type="submit" value="искать" class="bth-default ">
                 </div>
@@ -39,7 +37,7 @@
                         <div class="products-items">
                         @foreach($data['products'] as $product)
 					    @foreach($data['files'] as $file)
-					    @if($product->id == $file->product)
+					    @if($product->id == $file->product && $file->first == 1)
                             <a href="/product/{{$product->id}}" class="product-link">
                                 <div class="products-item">
                                     <img  src="/storage/{{$file->url}}" alt="" class="product-img">

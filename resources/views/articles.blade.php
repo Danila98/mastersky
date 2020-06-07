@@ -4,16 +4,19 @@
 @section('header')
         <section>
             <div class="page-products">
-                <form action="">
+                <form action="/searchArticle" method="post">
+                @csrf
                 <div class="page-products-filter">
                     <img src="/img/icon/logo.svg"  class="filter-logo" alt="">
                     <span>Категории</span>
                     <ul>
                     @foreach($data['categories'] as $category)
+                    @if($category->type == 1)
                         <li class="filter-item">
                             <input name="{{$category->name}}" value="{{$category->id}}" type="checkbox">
                             <label for="{{$category->name}}">{{$category->name}}</label>
                         </li>
+                    @endif
                     @endforeach
                     </ul>
                     <input type="submit" value="искать" class="bth-default ">

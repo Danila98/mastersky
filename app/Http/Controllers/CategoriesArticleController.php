@@ -24,6 +24,7 @@ class CategoriesArticleController extends Controller
         $category = new \App\CategoriesArticle();
 
         $category->name          = request('name');
+        $category->type          = request('type');
 
         $category->save();
         
@@ -42,6 +43,7 @@ class CategoriesArticleController extends Controller
         $category = \App\CategoriesArticle::find($id);
 
         $category->name             = request('name');
+        $category->type             = request('type');
         // $article->updated_at        = timestamp();
 
         $category->save();

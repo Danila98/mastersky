@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 class Comment extends Model
 {
-    public static function getCommentsList($id)
+    public static function getCommentsList($id, $essence)
     {
         
-        $comments = DB::select('select * from comments where product_id = :id', ['id' => $id]);
+        $comments = DB::select('select * from comments where '.$essence.' = :id', ['id' => $id]);
        
         return $comments;
     }

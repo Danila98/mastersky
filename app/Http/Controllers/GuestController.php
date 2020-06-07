@@ -40,7 +40,8 @@ class GuestController extends Controller
         return view('articles', compact('data'));
 
     }
-    public function oneArticles($id){
+    public static function oneArticles($id, $message = []){    
+
 
         $users = DB::table('users')->get();
 
@@ -49,12 +50,15 @@ class GuestController extends Controller
         $article = Article::find($id);
 
         $files = \App\Image::where('article', '=', $id)->first();
-
+      
+        $comments = \App\Comment::getCommentsList($id, 'article_id');
         $data = [
             'users' => $users,
             'categories' => $categories,
             'article' => $article,
             'files' => $files,
+            'comments' => $comments,
+            'message' => $message,
         ];
         return view('article', compact('data'));
 
@@ -63,26 +67,28 @@ class GuestController extends Controller
 
         $products = \App\Product::all();
         $files = \App\Image::all();
-       
+        $categories = \App\CategoriesArticle::all();
         $data = [
             'products' => $products,
             'files' => $files,
+            'categories' => $categories,
         ];
 
         return view('catalog', compact('data'));
 
     }
-    public function oneProduct($id){
+    public static function oneProduct($id, $message = []){
         $product = \App\Product::find($id);
         $files = \App\Image::all();
         $users = DB::table('users')->get();
-        $comments = \App\Comment::getCommentsList($id);
+        $comments = \App\Comment::getCommentsList($id, 'product_id');
 
         $data = [
             'products' => $product,
             'files' => $files,
             'comments' =>$comments,
             'users' =>$users,
+            'message' =>$message,
         ];
 
         return view('product', compact('data'));

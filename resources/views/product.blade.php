@@ -2,7 +2,9 @@
 
 
 @section('header')
+
     <div class="product-page">
+    
         <div class="product-photo">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -41,6 +43,12 @@
     </div>
     <section>
         <div class="news">
+        @if(isset($data['message']['good']))
+        <div class="alert alert-success" role="alert">{{$data['message']['good']}}</div>
+        @endif
+        @if(isset($data['message']['error']))
+        <div class="alert alert-danger" role="alert">{{$data['message']['error']}}</div>
+        @endif
             <div class="news-up">
                 <h3 class="head-home">Отзывы</h3>
                 @foreach($data['users'] as $user)

@@ -61,6 +61,8 @@ Route::delete('/myArticles/{id}', 'ArticlesController@delete');
 
 Route::post('/articles', 'ArticlesController@store');
 
+Route::post('/searchArticle', 'ArticlesController@store');
+
 //Категории статей
 
 Route::get('/categoriesArticle', 'CategoriesArticleController@index')->name('categoriesArticle');
@@ -92,12 +94,6 @@ Route::post('/createCategoriesProduct', 'CategoriesProductController@store');
 
 //Комментарии 
 
-Route::get('/categoriesProduct', 'CategoriesProductController@index')->name('categoriesProduct');
-
-Route::get('/categoriesProduct/create', 'CategoriesProductController@create')->name('categoriesProduct');
-
-Route::delete('/categoriesProduct/{id}', 'CategoriesProducteController@delete');
-
 Route::post('/commentCreate', 'CommentsController@store');
 //Продукция
 
@@ -112,6 +108,8 @@ Route::patch('/products/{id}', 'ProductsController@update');
 Route::delete('/products/{id}', 'ProductsController@delete');
 
 Route::post('/products', 'ProductsController@store');
+
+Route::post('/searchProduct', 'ProductsController@search');
 
 //Новости
 

@@ -14,6 +14,7 @@
                         </div>
                         <a href="products/create"><input class="bth bth-reg bth-articles" value="Добавить товар" type="submit"></a>
                         <div class="products-items">
+
                             @foreach($products as $product )
                             @foreach($files as $file)
                             @if ($product->id == $file->product)

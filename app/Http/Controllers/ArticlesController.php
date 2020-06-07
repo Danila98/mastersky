@@ -90,5 +90,19 @@ class ArticlesController extends Controller
         return redirect('/myArticles');
         
     }
+    public function search(){
+        
+        $categories = \App\CategoriesArticle::where('categories_id', '=', request('category'))->get();
+        $articles = \App\Article::all();
+        $files = \App\Image::all();
+       
+        $data =[
+            'categories' => $categories,
+            'articles' => $articles,
+            'files' => $files,
+        ];
+        return view('articles', compact('data'));
+
+    }
     
 }
